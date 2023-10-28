@@ -7,7 +7,16 @@ import axios from "axios";
 
 const libraries = ['places'];
 
-const allCountries = (await axios.get('../allCountries.json')).data;
+async function fetchAllCountries() {
+    try {
+        const response = await axios.get('../allCountries.json');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching all countries: ', error);
+    }
+}
+
+const allCountries = await fetchAllCountries();
 const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 function MainContainer({ location, setLocation, locationWeather, setLocationWeather, locationImgs, setLocationImgs, locationDesc, setLocationDesc, restOfDescs, setRestOfDescs, }) {
