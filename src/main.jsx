@@ -14,6 +14,7 @@ function App() {
   const [locationImgs, setLocationImgs] = React.useState([]);
   const [locationDesc, setLocationDesc] = React.useState('');
   const [restOfDescs, setRestOfDescs] = React.useState([]);
+  const [isLocationLoading, setIsLocationLoading] = React.useState(true);
 
   const mainConainerProps = { 
     location, 
@@ -26,6 +27,7 @@ function App() {
     setLocationDesc,
     restOfDescs, 
     setRestOfDescs,
+    setIsLocationLoading,
   };
 
   const locationProps = {
@@ -34,6 +36,7 @@ function App() {
     locationImgs,
     locationDesc,
     restOfDescs,
+    isLocationLoading,
   };
 
   return (

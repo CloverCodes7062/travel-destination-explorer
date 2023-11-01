@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios';
 import '../css/Location.css';
 
-function Location({ location, locationWeather, locationImgs, locationDesc, restOfDescs }) {
+function Location({ location, locationWeather, locationImgs, locationDesc, restOfDescs, isLocationLoading, }) {
     const [firstImg, setFirstImg] = React.useState(null);
 
     useEffect(() => {
@@ -14,6 +14,7 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
 
     return (
         <Background>
+            {!isLocationLoading ?
             <div className="location-container">
                 <h1 className="location-h1"/>
                 <h2>{ location }</h2>
@@ -45,6 +46,7 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
                     : null}
                 </ul>
             </div>
+            : <img src="../svg/loading.svg" alt="loading-svg"/>}
         </Background>
     );
 };
@@ -63,7 +65,7 @@ function LocationItem({ desc }) {
     return (
         <li className="location-img-name-desc list-group-item">
             <div className="location-img-div">
-                <img className="location-img" src={desc.allImgs[currentIndex]} alt='temp-img'/>
+                <img className="location-img" src={desc.allImgs[currentIndex]} alt='img-not-found'/>
                 <button className="btn btn-primary" onClick={decreaseCurrentIndex}>Back</button>
                 <button className="btn btn-primary" onClick={increaseCurrentIndex}>Next</button>
             </div>

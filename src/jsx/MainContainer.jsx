@@ -10,6 +10,7 @@ const libraries = ['places'];
 async function fetchAllCountries() {
     try {
         const response = await axios.get('../allCountries.json');
+        
         return response.data;
     } catch (error) {
         console.error('Error fetching all countries: ', error);
@@ -19,7 +20,7 @@ async function fetchAllCountries() {
 const allCountries = await fetchAllCountries();
 const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
-function MainContainer({ location, setLocation, locationWeather, setLocationWeather, locationImgs, setLocationImgs, locationDesc, setLocationDesc, restOfDescs, setRestOfDescs, }) {
+function MainContainer({ location, setLocation, locationWeather, setLocationWeather, locationImgs, setLocationImgs, locationDesc, setLocationDesc, restOfDescs, setRestOfDescs, setIsLocationLoading, }) {
 
     const [featuredCountries, setFeaturedCountries] = useState([]);
     const [weatherData, setWeatherData] = useState({});
@@ -37,6 +38,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
             const countries = response.data;
 
             const randomFeaturedCountries = getRandomItems(countries, 3);
+            setIsLocationLoading(true);
             setFeaturedCountries(randomFeaturedCountries);
         } catch (error) {
             console.error('Error fetching featured countries: ', error);
@@ -198,6 +200,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                     console.log('restToDo: ', restToDo);
 
                     setRestOfDescs(restToDo);
+                    setIsLocationLoading(false);
                 } else {
                     throw new Error('Nothing to Do');
                 }
