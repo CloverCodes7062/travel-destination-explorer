@@ -85,3 +85,7 @@ img {
     width: 100%;
     max-width: 200px;
 }
+
+.view-btn {
+    margin-left: 5px;
+};

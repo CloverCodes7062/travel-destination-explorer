@@ -111,7 +111,7 @@ app.get('/getLocationImgsFromPlaceId', async (req, res) => {
         res.status(200).json(photos);
 
     } else {
-        console.log('error', response.error_message || 'Error Fetching data from the API')
+        console.log('error', response.error_message || 'Error Fetching Photos From Place ID');
     }
 });
 
@@ -192,6 +192,16 @@ app.get('/getLocationThingsToDo', async (req, res) => {
     console.log('locationAllDetails: ', locationAllDetails);
     console.log('END OF LOGGING');
     res.status(200).json(locationAllDetails);
+});
+
+app.get('/getPlaceIDFromLocation', async (req, res) => {
+    const { location } = req.query;
+    const placeAPIUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${googleMapsAPIKey}`;
+    const response = (await axios.get(placeAPIUrl)).data;
+    console.log('response: ', response);
+    const placeID = response.results[0].place_id;
+    console.log('placeID: ', placeID);
+    res.status(200).json(placeID);
 });
 
 app.listen(port, () => {

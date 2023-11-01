@@ -167,35 +167,59 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
         console.log('Place Address', place.formatted_address);
         console.log('Retrieving photos for', place.place_id);
 
+        await setThingsToDO(place);
+    };
+
+    async function setThingsToDO (place, viewClick = false, buttonCountryCode = null) {
         try {
+            if (viewClick) {
+                console.log('old_place.place_id: ', place.place_id);
+                place.place_id = (await axios.get(`http://localhost:3000/getPlaceIdFromLocation?location=${place.formatted_address}`)).data;
+                console.log('place.place_id: ', place.place_id);
+            }
             const imgs = (await axios.get(`http://localhost:3000/getLocationImgsFromPlaceId?place_id=${place.place_id}`));
             setLocationImgs(imgs.data);
-            console.log('Retrieved photos for', place.place_id);
+            console.log('Retrieved photos for', place);
         } catch (error) {
-            console.error('Error retrieving photos for', place.place_id, ': ', error);
+            console.error('Error retrieving photos for', place, ': ', error);
         };
 
         try {
             const thingsToDo = (await axios.get(`http://localhost:3000/getLocationThingsToDo?location=${place.formatted_address}`)).data;
             console.log('thingsToDo: ', thingsToDo);
-            setLocationDesc(thingsToDo[0].description);
-            
-            const restToDo = thingsToDo.slice(1);
-            {/*const restToDo = await Promise.allSettled(thingsToDo.map((thingToDo, index) => {
-                if (index && index != 0 && thingToDo.name && thingToDo.description) {
-                    return Promise.resolve([thingToDo.name, thingToDo.description]);
-                };
-                return Promise.resolve(null);
-            }));*/}
+            try {
+                const firstNonNull = thingsToDo.find((thingToDo) => thingToDo.description != null);
 
-            console.log('restToDo: ', restToDo);
+                if (firstNonNull) {
+                    console.log('firstNonNull: ', firstNonNull.description);
+                    setLocationDesc(firstNonNull.description);
+                    const restToDo = thingsToDo.slice(thingsToDo.indexOf(firstNonNull) + 1);
 
-            setRestOfDescs(restToDo);
+                    console.log('restToDo: ', restToDo);
+
+                    setRestOfDescs(restToDo);
+                } else {
+                    throw new Error('Nothing to Do');
+                }
+            } catch (error) {
+                console.error('Error: Nothing to Do', error);
+
+                const listItem = document.querySelector(`li[key=${buttonCountryCode}]`);
+                console.log('listItem: ', listItem);
+                if (listItem){
+                    const button = listItem.querySelector('button');
+                    console.log('button: ', button);
+                    if (button){
+                        button.textContent = 'Nothing to Do';
+                    }
+                }
+
+            }
             
         } catch (error) {
             console.error('Error getting thingsToDo, or restOfDescs: ', error);
         };
-    };
+    }
 
     return (
         <Background>
@@ -214,7 +238,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                         </Autocomplete>
                     </LoadScript>
                     <Link to="/location">
-                        <input className="country-submit btn btn-primary" type="submit"/>
+                        <input className="btn btn-primary" type="submit"/>
                     </Link>
                 </div>
                 <h2 className="featured-countries-h2">
@@ -252,6 +276,14 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                             <p className="featured-country-weather-p animate__animated animate__bounceInRight">
                                 ({Math.round(weatherData[country.cca3].high)}°F/
                                 {Math.round(weatherData[country.cca3].low)}°F)
+                                <Link to="/location">
+                                    <button 
+                                    className="btn btn-danger view-btn"
+                                    onClick={() => setThingsToDO({formatted_address: `${country.capital}, ${country.name.common}`, place_id: null}, true, country.cca3)}
+                                    >
+                                        View
+                                    </button>
+                                </Link>
                             </p>
                             : 
                             <p className="loading-p animate__animated animate__bounceInUp">
