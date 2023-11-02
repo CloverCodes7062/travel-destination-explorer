@@ -16,8 +16,7 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
         <Background>
             {!isLocationLoading ?
             <div className="location-container">
-                <h1 className="location-h1"/>
-                <h2>{ location }</h2>
+                <h1 className="location-h1">{ location }</h1>
                 {locationWeather ?
                     <p className="location-weather-p">
                         {Math.round(locationWeather.high)}°F/
@@ -25,17 +24,23 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
                     </p>
                     : null}
                 <br/>
-                <a href="http://localhost:5173/">
+                <a href="/">
                     <button className="btn btn-primary">Back to Mainpage</button>
                 </a>
+                <br/>
                 <div className="location-div-grid">
                     <img src={firstImg ? `data:image/jpeg;base64,${firstImg}` : '/'} alt="location-img"/>
-                    <p className="location-discription-p">
+                    <p className="location-discription-p first-desc-p">
                         {locationDesc ? locationDesc : null}
                     </p>
                 </div>
                 <br/>
                 <ul className="location-ul list-group">
+                    <li className="location-name-desc-booknow list-group-item">
+                        <p className="booknow-p">Attraction</p>
+                        <p className="booknow-p">Description</p>
+                        <p className="booknow-p">Book Now</p>
+                    </li>
                     {restOfDescs ? restOfDescs.map((desc, index) => { 
                         if (desc.name && desc.description) {
                             return (
@@ -65,9 +70,11 @@ function LocationItem({ desc }) {
     return (
         <li className="location-img-name-desc list-group-item">
             <div className="location-img-div">
-                <img className="location-img" src={desc.allImgs[currentIndex]} alt='img-not-found'/>
-                <button className="btn btn-primary" onClick={decreaseCurrentIndex}>Back</button>
-                <button className="btn btn-primary" onClick={increaseCurrentIndex}>Next</button>
+                <img className="location-img animate__animated animate__fadeIn" src={desc.allImgs[currentIndex]} alt='img-not-found' key={currentIndex}/>
+                <div className="location-img-btns">
+                    <button className="btn btn-primary" onClick={decreaseCurrentIndex}>Back</button>
+                    <button className="btn btn-primary" onClick={increaseCurrentIndex}>Next</button>
+                </div>
             </div>
             <p className="location-name-p">
                 {desc.name}

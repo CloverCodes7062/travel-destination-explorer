@@ -178,6 +178,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                 console.log('old_place.place_id: ', place.place_id);
                 place.place_id = (await axios.get(`http://localhost:3000/getPlaceIdFromLocation?location=${place.formatted_address}`)).data;
                 console.log('place.place_id: ', place.place_id);
+                setLocation(place.formatted_address);
             }
             const imgs = (await axios.get(`http://localhost:3000/getLocationImgsFromPlaceId?place_id=${place.place_id}`));
             setLocationImgs(imgs.data);
@@ -269,7 +270,12 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                                 />
                                 : null}
                                 <div className="featured-country-name-desc">
-                                    <p className="featured-country-p animate__animated animate__bounceInLeft">{country.flag} {country.capital}, {country.name.common}</p>
+                                    <p className="featured-country-p animate__animated animate__bounceInLeft">
+                                        {country.flag} 
+                                        {country.capital === 'Washington DC' ? 'Washington D.C, United States' 
+                                        : 
+                                        `${country.capital}, ${country.name.common}`}
+                                    </p>
                                     <p className="featured-country-desc-p animate__animated animate__bounceInLeft">{allCountries[`${country.capital}, ${country.name.common}`]}</p>
                                 </div>
                             </div>
@@ -288,10 +294,8 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                                     </button>
                                 </Link>
                             </p>
-                            : 
-                            <p className="loading-p animate__animated animate__bounceInUp">
-                                Loading...
-                            </p>
+                            :
+                            <img src="../svg/loading.svg" height={75} width={75}/>
                             }
                         </li>
                         )

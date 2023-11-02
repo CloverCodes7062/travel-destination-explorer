@@ -1,17 +1,29 @@
 .location-container {
-    width: 85%;
-    height: 85%;
-    background-color: lightblue;
-    position: relative;
+    width: 90%;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    overflow-y: auto;
+}
+
+.location-h1 {
+    color: rgb(200,211,236);
+}
+
+.location-weather-p {
+    font-weight: bolder;
+    font-size: 20px;
+    color: rgb(208,218,237);
+}
+
+.first-desc-p {
+    color:  rgb(148, 163, 184);
 }
 
 .location-ul {
-    max-height: 50%;
-    overflow-y: auto;
+    max-height: 35%;
 }
 
 .location-div-grid {
@@ -20,15 +32,41 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
-    background-color: lightgray;
-    overflow-y: auto;
+    overflow-y: show;
 }
 
 .location-img-name-desc {
     display: grid;
-    grid-template-columns: 1fr 25ch 50ch 1fr;
+    grid-template-columns: 1fr 25ch 50ch auto;
+    gap: 10px;
+    align-items: center;
 }
 
+.booknow-p {
+    font-weight: bolder;
+}
+
+.location-name-desc-booknow {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
+}
 .location-img {
     margin-left: 10px;
+}
+
+.location-img-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.location-img-btns {
+    display: flex;
+    gap: 10px;
 }
