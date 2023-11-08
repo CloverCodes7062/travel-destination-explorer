@@ -17,7 +17,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    height: 600px;
+    height: fit-content;
 }
 
 .location-h1 {
@@ -40,9 +40,7 @@
 }
 
 .location-ul {
-    max-height: 400px;
-    /*overflow-y: auto;*/
-    /*display: none;*/
+    height: auto;
 }
 
 .location-div-grid {
