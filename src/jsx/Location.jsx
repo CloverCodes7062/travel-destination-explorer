@@ -24,11 +24,9 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
                             {Math.round(locationWeather.low)}°F
                         </p>
                         : null}
-                    <br/>
                     <a href="/">
                         <button className="btn btn-primary">Back to Mainpage</button>
                     </a>
-                    <br/>
                     <div className="location-div-grid">
                         <img src={firstImg ? `data:image/jpeg;base64,${firstImg}` : '/'} alt="location-img"/>
                         <p className="location-discription-p first-desc-p">
