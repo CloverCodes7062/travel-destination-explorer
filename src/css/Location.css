@@ -31,7 +31,7 @@
 }
 
 .location-ul {
-    max-height: 35%;
+    max-height: 500px;
     overflow-y: auto;
 }
 
