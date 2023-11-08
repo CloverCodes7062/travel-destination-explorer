@@ -189,6 +189,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
         try {
             const thingsToDo = (await axios.get(`https://travel-destination-explorer-back-end.onrender.com/getLocationThingsToDo?location=${place.formatted_address}`)).data;
             console.log('thingsToDo: ', thingsToDo);
+            console.log('thingsToDo: ', thingsToDo);
             try {
                 const firstNonNull = thingsToDo.find((thingToDo) => thingToDo.description != null);
 
