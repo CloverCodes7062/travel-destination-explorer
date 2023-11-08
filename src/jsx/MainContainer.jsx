@@ -295,7 +295,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                                 </Link>
                             </p>
                             :
-                            <img src="../svg/loading.svg" height={75} width={75}/>
+                            <img src="/loading.svg" height={75} width={75}/>
                             }
                         </li>
                         )
