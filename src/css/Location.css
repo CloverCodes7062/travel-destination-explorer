@@ -10,6 +10,7 @@
 }
 
 .location-header {
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
