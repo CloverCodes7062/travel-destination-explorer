@@ -13,8 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 35vh;
-    overflow-y: auto;
+    height: 600px;
 }
 
 .location-h1 {
@@ -32,7 +31,7 @@
 }
 
 .location-ul {
-    max-height: 400px;
+    max-height: 350px;
     overflow-y: auto;
 }
 
