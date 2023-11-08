@@ -8,6 +8,14 @@
     overflow-y: auto;
 }
 
+.location-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65%;
+}
+
 .location-h1 {
     color: rgb(200,211,236);
 }
@@ -23,7 +31,7 @@
 }
 
 .location-ul {
-    height: 5%;
+    height: 35%;
 }
 
 .location-div-grid {

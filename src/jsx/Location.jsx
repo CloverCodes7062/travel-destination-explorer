@@ -16,25 +16,27 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
         <Background>
             {!isLocationLoading ?
             <div className="location-container">
-                <h1 className="location-h1">{ location }</h1>
-                {locationWeather ?
-                    <p className="location-weather-p">
-                        {Math.round(locationWeather.high)}°F/
-                        {Math.round(locationWeather.low)}°F
-                    </p>
-                    : null}
-                <br/>
-                <a href="/">
-                    <button className="btn btn-primary">Back to Mainpage</button>
-                </a>
-                <br/>
-                <div className="location-div-grid">
-                    <img src={firstImg ? `data:image/jpeg;base64,${firstImg}` : '/'} alt="location-img"/>
-                    <p className="location-discription-p first-desc-p">
-                        {locationDesc ? locationDesc : null}
-                    </p>
+                <div className="location-header">
+                    <h1 className="location-h1">{ location }</h1>
+                    {locationWeather ?
+                        <p className="location-weather-p">
+                            {Math.round(locationWeather.high)}°F/
+                            {Math.round(locationWeather.low)}°F
+                        </p>
+                        : null}
+                    <br/>
+                    <a href="/">
+                        <button className="btn btn-primary">Back to Mainpage</button>
+                    </a>
+                    <br/>
+                    <div className="location-div-grid">
+                        <img src={firstImg ? `data:image/jpeg;base64,${firstImg}` : '/'} alt="location-img"/>
+                        <p className="location-discription-p first-desc-p">
+                            {locationDesc ? locationDesc : null}
+                        </p>
+                    </div>
+                    <br/>
                 </div>
-                <br/>
                 <ul className="location-ul list-group">
                     <li className="location-name-desc-booknow list-group-item">
                         <p className="booknow-p">Attraction</p>
