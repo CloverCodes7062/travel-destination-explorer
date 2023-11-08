@@ -35,21 +35,23 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
                     </p>
                 </div>
                 <br/>
-                <ul className="location-ul list-group">
-                    <li className="location-name-desc-booknow list-group-item">
-                        <p className="booknow-p">Attraction</p>
-                        <p className="booknow-p">Description</p>
-                        <p className="booknow-p">Book Now</p>
-                    </li>
-                    {restOfDescs ? restOfDescs.map((desc, index) => { 
-                        if (desc.name && desc.description) {
-                            return (
-                                <LocationItem desc={desc} key={index}/>
-                            );
-                        }
-                    }) 
-                    : null}
-                </ul>
+                <div className="location-div-ul">
+                    <ul className="list-group">
+                        <li className="location-name-desc-booknow list-group-item">
+                            <p className="booknow-p">Attraction</p>
+                            <p className="booknow-p">Description</p>
+                            <p className="booknow-p">Book Now</p>
+                        </li>
+                        {restOfDescs ? restOfDescs.map((desc, index) => { 
+                            if (desc.name && desc.description) {
+                                return (
+                                    <LocationItem desc={desc} key={index}/>
+                                );
+                            }
+                        }) 
+                        : null}
+                    </ul>
+                </div>
             </div>
             : <img src="/loading.svg" alt="loading-svg"/>}
         </Background>

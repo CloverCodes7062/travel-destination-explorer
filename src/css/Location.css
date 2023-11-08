@@ -22,8 +22,9 @@
     color:  rgb(148, 163, 184);
 }
 
-.location-ul {
+.location-div-ul {
     height: 35%;
+    overflow-y: auto;
 }
 
 .location-div-grid {
