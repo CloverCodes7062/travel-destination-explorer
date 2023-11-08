@@ -90,7 +90,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
 
     const getImgs = async (country) => {
         const capital  = country.capital;
-        const fetchURL = `http://localhost:3000/getFeaturedCountryImgs?capital=${capital}&country=${country.name.common}`;
+        const fetchURL = `https://travel-destination-explorer-back-end.onrender.com/getFeaturedCountryImgs?capital=${capital}&country=${country.name.common}`;
         console.log(`Fetching photos for ${capital}, ${country.name.common}`);
 
         try {
@@ -104,7 +104,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
 
     const getWeather = async (country) => {
         const capital = country.capital;
-        const fetchURL = `http://localhost:3000/getWeatherFromCity?capital=${capital}&country=${country.name.common}`;
+        const fetchURL = `https://travel-destination-explorer-back-end.onrender.com/getWeatherFromCity?capital=${capital}&country=${country.name.common}`;
         console.log(`Fetching weather data for ${capital}, ${country.name.common}`);
         
         try {
@@ -129,15 +129,15 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
 
         if (locationArray.length == 3) {
             const [part1, part2, part3] = locationArray;
-            fetchURL = `http://localhost:3000/getWeatherFromLocation?city=${part1}&state=${part2}&country=${part3}`;
+            fetchURL = `https://travel-destination-explorer-back-end.onrender.com/getWeatherFromLocation?city=${part1}&state=${part2}&country=${part3}`;
 
         } else if (locationArray.length == 2) {
             const [part1, part2] = locationArray;
-            fetchURL = `http://localhost:3000/getWeatherFromLocation?city=${part1}&country=${part2}`;
+            fetchURL = `https://travel-destination-explorer-back-end.onrender.com/getWeatherFromLocation?city=${part1}&country=${part2}`;
         
         } else if (locationArray.length == 1) {
             const part1 = locationArray[0];
-            fetchURL = `http://localhost:3000/getWeatherFromLocation?country=${part1}`;
+            fetchURL = `https://travel-destination-explorer-back-end.onrender.com/getWeatherFromLocation?country=${part1}`;
         } else {
             return null;
         }
@@ -176,11 +176,11 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
         try {
             if (viewClick) {
                 console.log('old_place.place_id: ', place.place_id);
-                place.place_id = (await axios.get(`http://localhost:3000/getPlaceIdFromLocation?location=${place.formatted_address}`)).data;
+                place.place_id = (await axios.get(`https://travel-destination-explorer-back-end.onrender.com/getPlaceIdFromLocation?location=${place.formatted_address}`)).data;
                 console.log('place.place_id: ', place.place_id);
                 setLocation(place.formatted_address);
             }
-            const imgs = (await axios.get(`http://localhost:3000/getLocationImgsFromPlaceId?place_id=${place.place_id}`));
+            const imgs = (await axios.get(`https://travel-destination-explorer-back-end.onrender.com/getLocationImgsFromPlaceId?place_id=${place.place_id}`));
             setLocationImgs(imgs.data);
             console.log('Retrieved photos for', place);
         } catch (error) {
@@ -188,7 +188,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
         };
 
         try {
-            const thingsToDo = (await axios.get(`http://localhost:3000/getLocationThingsToDo?location=${place.formatted_address}`)).data;
+            const thingsToDo = (await axios.get(`https://travel-destination-explorer-back-end.onrender.com/getLocationThingsToDo?location=${place.formatted_address}`)).data;
             console.log('thingsToDo: ', thingsToDo);
             try {
                 const firstNonNull = thingsToDo.find((thingToDo) => thingToDo.description != null);
