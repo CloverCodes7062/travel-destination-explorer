@@ -31,8 +31,8 @@
 }
 
 .location-ul {
-    max-height: 35px;
-    overflow-y: hidden;
+    max-height: 350px;
+    overflow-y: auto;
 }
 
 .location-div-grid {
