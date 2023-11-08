@@ -9,7 +9,7 @@ const libraries = ['places'];
 
 async function fetchAllCountries() {
     try {
-        const response = await axios.get('../allCountries.json');
+        const response = await axios.get('/allCountries.json');
         
         return response.data;
     } catch (error) {
