@@ -35,7 +35,6 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
                             {locationDesc ? locationDesc : null}
                         </p>
                     </div>
-                    <br/>
                 </div>
                 <ul className="location-ul list-group">
                     <li className="location-name-desc-booknow list-group-item">
