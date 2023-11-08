@@ -21,7 +21,8 @@ const allCountries = await fetchAllCountries();
 
 function MainContainer({ location, setLocation, locationWeather, setLocationWeather, locationImgs, setLocationImgs, locationDesc, setLocationDesc, restOfDescs, setRestOfDescs, setIsLocationLoading, }) {
     const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-
+    console.log('googleMapsApiKey: ', googleMapsApiKey);
+    
     const [featuredCountries, setFeaturedCountries] = useState([]);
     const [weatherData, setWeatherData] = useState({});
     const [calledFetchFeaturedCountries, setCalledFetchFeaturedCountries] = useState(false);
