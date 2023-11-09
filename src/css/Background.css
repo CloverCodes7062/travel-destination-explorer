@@ -4,10 +4,13 @@
 }
 
 .background {
-    width: 100vw;
-    height: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: fit-content;
+    height: fit-content;
     padding: 2vw 2vh;
     background-color: rgb(16,23,42);
     display: flex;
     justify-content: center;
+    overflow-y: auto;
 }
