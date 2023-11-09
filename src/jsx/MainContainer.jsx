@@ -283,7 +283,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                                 : null}
                                 <div className="featured-country-name-desc">
                                     <p className="featured-country-p animate__animated animate__bounceInLeft">
-                                        <span className="emoji-flag">{country.flag}</span> {country.capital}, {country.name.common}
+                                        <img className="country-flag" src={country.flags.svg}/> {country.capital}, {country.name.common}
                                     </p>
                                     <p className="featured-country-desc-p animate__animated animate__bounceInLeft">{allCountries[`${country.capital}, ${country.name.common}`]}</p>
                                 </div>

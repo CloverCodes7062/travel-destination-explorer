@@ -9,9 +9,10 @@
     gap: 20px;
 }
 
-.emoji-flag {
-    font-family: "Segoe UI Emoji", "Noto Color Emoji", "Twemoji", "Apple Color Emoji", "EmojiOne", "Android Emoji", sans-serif;
-  }
+.country-flag {
+    height: 15px;
+    width: 25px;
+}
 
 .main-h1 {
     margin-top: 15px;
