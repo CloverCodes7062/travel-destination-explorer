@@ -57,7 +57,11 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
                     : null}
                 </ul>
             </div>
-            : <img src="/loading.svg" alt="loading-svg"/>}
+            : 
+            <div className="loading-div">
+                <img src="/loading.svg" alt="loading-svg" height={150} width={150}/>
+            </div>
+            }
         </Background>
     );
 };
