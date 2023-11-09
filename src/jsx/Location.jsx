@@ -15,7 +15,7 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
     const locationContainerStyles = {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        alignItems: 'center',
         gap: '20px',
     };
 
