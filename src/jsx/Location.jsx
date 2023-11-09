@@ -12,10 +12,17 @@ function Location({ location, locationWeather, locationImgs, locationDesc, restO
         }
     }, [locationImgs]);
 
+    const locationContainerStyles = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        gap: '20px',
+    };
+
     return (
         <Background>
             {!isLocationLoading ?
-            <div className="location-container">
+            <div className="location-container" style={locationContainerStyles}>
                 <div className="location-header">
                     <h1 className="location-h1">{ location }</h1>
                     {locationWeather ?

@@ -4,9 +4,9 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-direction: column;
     overflow-y: auto;
+    gap: 20px;
 }
 
 .main-h1 {
