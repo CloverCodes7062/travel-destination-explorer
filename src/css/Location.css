@@ -37,9 +37,7 @@
 }
 
 .location-ul {
-    max-height: 450px;
-    overflow-y: auto;
-    display: none;
+    max-height: 200px;
 }
 
 .location-div-grid {
