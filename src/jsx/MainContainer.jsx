@@ -4,6 +4,7 @@ import { GoogleMap, LoadScript, Autocomplete } from '@react-google-maps/api';
 import Background from "./Background";
 import { Outlet, Link } from "react-router-dom";
 import axios from "axios";
+import e from "cors";
 
 const libraries = ['places'];
 
@@ -20,6 +21,17 @@ async function fetchAllCountries() {
 const allCountries = await fetchAllCountries();
 const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
+function CountryFlag({ country }) {
+    return (
+        <img 
+        src={country.flag}
+        alt={`Flag of ${country.name.common}`}
+        className="country-flag"
+        onError={(e)=>{e.target.style.display='none'}}
+        />
+        
+    );
+};
 function MainContainer({ location, setLocation, locationWeather, setLocationWeather, locationImgs, setLocationImgs, locationDesc, setLocationDesc, restOfDescs, setRestOfDescs, setIsLocationLoading, }) {
     const [featuredCountries, setFeaturedCountries] = useState([]);
     const [weatherData, setWeatherData] = useState({});
@@ -271,10 +283,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
                                 : null}
                                 <div className="featured-country-name-desc">
                                     <p className="featured-country-p animate__animated animate__bounceInLeft">
-                                        {country.flag} 
-                                        {country.capital === 'Washington DC' ? 'Washington D.C, United States' 
-                                        : 
-                                        `${country.capital}, ${country.name.common}`}
+                                        <span className="emoji-flag">{country.flag}</span> {country.capital}, {country.name.common}
                                     </p>
                                     <p className="featured-country-desc-p animate__animated animate__bounceInLeft">{allCountries[`${country.capital}, ${country.name.common}`]}</p>
                                 </div>

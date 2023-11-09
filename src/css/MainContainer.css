@@ -9,6 +9,10 @@
     gap: 20px;
 }
 
+.emoji-flag {
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", "Twemoji", "Apple Color Emoji", "EmojiOne", "Android Emoji", sans-serif;
+  }
+
 .main-h1 {
     margin-top: 15px;
     text-align: center;
@@ -90,4 +94,4 @@ img {
 
 .view-btn {
     margin-left: 5px;
-};
+}
