@@ -41,7 +41,7 @@ function MainContainer({ location, setLocation, locationWeather, setLocationWeat
     const [featuredCountriesImgs, setFeaturedCountriesImgs] = React.useState({});
 
     const fetchFeaturedCountries = async () => {
-        const apiUrl = 'https://restcountries.com/v3.1/all';
+        const apiUrl = 'https://restcountries.net/v3.1/all';
         console.log('Fetching featured countries...');
 
         try {
